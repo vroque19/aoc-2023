@@ -19,7 +19,7 @@ def main():
         # print(poss_games)
             # part 2
             sum_of_powers += part2(line)
-            print(sum_of_powers)
+        print(sum_of_powers)
 
 def part2(inp):
     curr = ""
