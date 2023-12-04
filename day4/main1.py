@@ -6,8 +6,11 @@ def main():
         lines = f.readlines()
         total = 0
         for line in lines:
-            matches1 = re.findall(r'\b\d+\b', line.split('|')[0])
-            matches2 = re.findall(r'\b\d+\b', line.split('|')[1])
+            line = line.split(':')[1]
+            matches1 = re.findall(r'\d+', line.split('|')[0])
+            matches2 = re.findall(r'\d+', line.split('|')[1])
+            print(matches1)
+            print(matches2)
 
             winning_nums = list(map(int, matches1))
             my_nums = list(map(int, matches2))
@@ -15,8 +18,6 @@ def main():
             
             for num in my_nums:
                 if num in winning_nums:
-                    idx = winning_nums.index(num)
-                    winning_nums.pop(idx)
                     my_wins.append(num)
             if len(my_wins) > 0:
                 total += 2**(int(len(my_wins)-1))
