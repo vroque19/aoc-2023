@@ -12,7 +12,6 @@ def is_valid_part(string, input, valid_pos, r, c, length, gears, num):
                 val = gears[key]
                 # print(val, string)
                 return True # there are two neighbors
-    
 
 def print_marked_pos(adj_list):
     for row in adj_list:
@@ -33,7 +32,7 @@ def main():
         total = 0
         num = 1
         
-        gears = {} ## initialize dict to hold values of neighbors
+        gears = dict() # initialize dict to hold values of neighbors
         ###
         mark = [[0 for i in range(width)]for i in range(height)] # mark all neighbors
         for r, line in enumerate(lines):
