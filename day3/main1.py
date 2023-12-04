@@ -42,14 +42,10 @@ def main():
         for i in range(height):
             curr_part = ""
             for j in range(width+1):
-                # print(j)
                 char = lines[i][j]
                 if char.isdigit():
                     curr_part += char
-                    # print(mark[i][j], char)
-                    # print(curr_part)
                 if not char.isdigit() and curr_part or j == width and curr_part:
-                    # print(curr_part)
                     length = len(curr_part)
                     valid = is_valid_part(curr_part, lines, mark, i, j, length)
                     # print(curr_part, valid)
