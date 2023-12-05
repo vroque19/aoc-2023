@@ -1,15 +1,13 @@
-# for each seed, we must go through 7 maps
-# add a newline to the end of the input file to work
-from memory_profiler import profile
+# must add a newline to the end of the input file to work
+
 def getSeeds(line):
     nums = line.split(': ')[1]
     nums = (nums.split(' '))
     return list(nums)
 
-@profile
 def mapData(destination, source, ranges, map):
     data_range = range(source, source + ranges)
-    map[data_range] = [destination + i for i in range(ranges)]
+    map[data_range] = destination
     # print(map)
     return map
 
@@ -19,11 +17,10 @@ def initializeMaps(lines):
         all_maps.append(dict())
     return all_maps
 
-@profile
 def getNewVal(key, mymap):
     for range_obj, v in mymap.items():
         if key in range_obj:
-            return v[key - range_obj.start]
+            return v + (key-range_obj.start)
     return key
 
 def main():
@@ -47,14 +44,13 @@ def main():
             
                 mapData(dest, src, ran, all_maps[map])
         # trying to find location
-        locations = []
-        for seed in seeds:
-            value = int(seed)
-            for i in range(len(all_maps)):
-                value = getNewVal(value, all_maps[i])
-            locations.append(value)
-        # print("locations:", locations)
-        print(min(locations))
+    locations = []
+    for seed in seeds:
+        value = int(seed)
+        for i in range(len(all_maps)):
+            value = getNewVal(value, all_maps[i])
+        locations.append(value)
+    print(min(locations))
         
         # seed_to_soil = all_maps[0]
         # soil_to_fert = all_maps[1]
