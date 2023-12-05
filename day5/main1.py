@@ -1,11 +1,12 @@
 # for each seed, we must go through 7 maps
 # add a newline to the end of the input file to work
-
+from memory_profiler import profile
 def getSeeds(line):
     nums = line.split(': ')[1]
     nums = (nums.split(' '))
     return list(nums)
 
+@profile
 def mapData(destination, source, ranges, map):
     data_range = range(source, source + ranges)
     map[data_range] = [destination + i for i in range(ranges)]
@@ -18,6 +19,7 @@ def initializeMaps(lines):
         all_maps.append(dict())
     return all_maps
 
+@profile
 def getNewVal(key, mymap):
     for range_obj, v in mymap.items():
         if key in range_obj:
