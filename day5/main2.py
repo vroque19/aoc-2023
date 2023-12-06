@@ -23,7 +23,7 @@ def getNewVal(key, mymap):
     return key
 
 def main():
-    with open("input2.txt", 'r') as f:
+    with open("big2.txt", 'r') as f:
         lines = f.readlines()
         seeds = getSeeds(lines[0].rstrip())
         all_maps = initializeMaps(lines)
@@ -54,8 +54,7 @@ def main():
             new_value = value
             for i in range(len(all_maps)):
                 new_value = getNewVal(new_value, all_maps[i])
-                # print(value)
-                # print("seed: ", value+x, "new: ", new_value)
+                
             if int(new_value) < location:
                 location = new_value
         count += 1
